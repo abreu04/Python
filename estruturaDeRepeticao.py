@@ -369,3 +369,449 @@
 # 23-Faça um programa que mostre todos os primos entre 1 e N sendo N um número inteiro fornecido pelo usuário.
 # O programa deverá mostrar também o número de divisões que ele executou para encontrar os números primos.
 # Serão avaliados o funcionamento, o estilo e o número de testes (divisões) executados.
+
+# numero = int(input("Digite um número inteiro: "))
+# num = numero
+# lista_primos = []
+# divisoes = 0
+# while num > 1:
+#     i = 2
+#     primo = 0
+#     while i < num:
+#         resto = num % i
+#         if resto == 0:
+#             primo += 1
+#         i += 1
+#         divisoes += 1
+#     if primo == 0:
+#         lista_primos.append(num)
+#     num -= 1
+# print(f"Número(s) primo(s) entre 1 e {numero}\n{sorted(lista_primos)}\n"
+#       f"Foram executadas {divisoes} divisões")
+
+# 24-Faça um programa que calcule o mostre a média aritmética de N notas.
+
+# sentinela = "S"
+# notas = []
+# while sentinela == "S":
+#     n = float(input("Digite uma nota: "))
+#     notas.append(n)
+#     sentinela = input("Para inserir mais uma nota digite S, ou pressione enter para calcular a média: ")
+#     sentinela = sentinela.upper()
+# if len(notas) > 0:
+#     media = sum(notas) / len(notas)
+#     print(f"A média aritmética da(s) nota(s) digitadas é {media}")
+
+# 25-Faça um programa que peça para n pessoas a sua idade, ao final o programa devera verificar
+# se a média de idade da turma varia entre 0 e 25,26 e 60 e maior que 60;
+# e então, dizer se a turma é jovem, adulta ou idosa, conforme a média calculada.
+
+# sentinela = "S"
+# idades = []
+# while sentinela == "S":
+#     id = float(input("Digite uma idade: "))
+#     idades.append(id)
+#     sentinela = input("Para inserir mais uma idade digite S, ou pressione enter para calcular a média: ")
+#     sentinela = sentinela.upper()
+# if len(idades) > 0:
+#     media = round(sum(idades) / len(idades))
+# if 0 < media <= 25:
+#     print(f"A média de idade da turma é {media}, trata-se de uma turma jovem.")
+# elif 25 < media <= 60:
+#     print(f"A média de idade da turma é {media}, trata-se de uma turma adulta.")
+# elif media > 60:
+#     print(f"A média de idade da turma é {media}, trata-se de uma turma idosa.")
+# else:
+#     print(f"A média de idade da turma está fora do padrão esperado, média = {media}.")
+
+# 26-Numa eleição existem três candidatos. Faça um programa que peça o número total de eleitores.
+# Peça para cada eleitor votar e ao final mostrar o número de votos de cada candidato.
+
+# total_eleitores = int (input("Informe um número total de eleitores: "))
+# candidatos = {1:["Candidato 1", 0], 2: ["Candidato 2", 0], 3: ["Candidato 3", 0]}
+# voto_em_branco = 0
+# i = 1
+# while i <= total_eleitores:
+#     a = 0
+#     for a in candidatos:
+#         print(candidatos[a][0], end="  ")
+#     voto = int(input("\nDigite o número correspondente ao candidato desejado: "))
+#     if voto == 1 or voto == 2 or voto == 3:
+#         candidatos[voto][1] += 1
+#     else:
+#         # print("Nenhum dos três!")
+#         voto_em_branco += 1
+#     i += 1
+# print(f"Tivemos {total_eleitores} eleitores nesta eleição.\n"
+#       f"A distribuição dos votos ficou da seguinte forma:\n"
+#       f"{candidatos[1][0]} recebeu {candidatos[1][1]} voto(s)\n"
+#       f"{candidatos[2][0]} recebeu {candidatos[2][1]} voto(s)\n"
+#       f"{candidatos[3][0]} recebeu {candidatos[3][1]} voto(s)\n"
+#       f"Voto em branco = {voto_em_branco}")
+
+# 27-Faça um programa que calcule o número médio de alunos por turma. Para isto, peça a quantidade de turmas
+# e a quantidade de alunos para cada turma. As turmas não podem ter mais de 40 alunos.
+
+# numero_turmas = 0
+# while numero_turmas <= 0:
+#     numero_turmas = int(input("Informe a quantidade de turmas: "))
+# turmas = {}
+# i = 1
+# while i <= numero_turmas:
+#     alunos = int(input(f"Informe o número de alunos da turma {i}: "))
+#     if 0 < alunos <= 40:
+#         turmas[i] = alunos
+#         i += 1
+# print(turmas)
+# media = sum(turmas.values()) / len(turmas)
+# print(f"A média de alunos por turma é {round(media)}")
+
+# 28-Faça um programa que calcule o valor total investido por um colecionador em sua coleção de CDs
+# e o valor médio gasto em cada um deles. O usuário deverá informar a quantidade de CDs e o valor para em cada um.
+
+# numero_cds = int(input("Informe a quantidade de CDs da coleção: "))
+# colecao = {}
+# i = 1
+# while i <= numero_cds:
+#     cd = int(input(f"Informe o valor no CD {i}: "))
+#     colecao[i] = cd
+#     i += 1
+# media = sum(colecao.values()) / len(colecao)
+# print(f"Cada CD custou em média R${round(media,2)}\n"
+#       f"A coleção completa, com {len(colecao)} CDs, custou R${round(sum(colecao.values()),2)}")
+
+# 29-O Sr. Manoel Joaquim possui uma grande loja de artigos de R$ 1,99, com cerca de 10 caixas.
+# Para agilizar o cálculo de quanto cada cliente deve pagar ele desenvolveu um tabela que contém
+# o número de itens que o cliente comprou e ao lado o valor da conta. Desta forma a atendente do caixa precisa
+# apenas contar quantos itens o cliente está levando e olhar na tabela de preços.
+# Você foi contratado para desenvolver o programa que monta esta tabela de preços,
+# que conterá os preços de 1 até 50 produtos, conforme o exemplo abaixo:
+#     Lojas Quase Dois - Tabela de preços
+#     1 - R$ 1.99
+#     2 - R$ 3.98
+#     ...
+#     50 - R$ 99.50
+
+# produto = 50
+# preco = 1.99
+# i = 1
+# while i <= produto:
+#     print(f"{i} - R$ {i * preco:.2f}")
+#     i += 1
+
+# 30-O Sr. Manoel Joaquim acaba de adquirir uma panificadora e pretende implantar a metodologia da tabelinha,
+# que já é um sucesso na sua loja de 1,99. Você foi contratado para desenvolver o programa que monta
+# a tabela de preços de pães, de 1 até 50 pães, a partir do preço do pão informado pelo usuário,
+# conforme o exemplo abaixo:
+#     Preço do pão: R$ 0.18
+#     Panificadora Pão de Ontem - Tabela de preços
+#     1 - R$ 0.18
+#     2 - R$ 0.36
+#     ...
+#     50 - R$ 9.00
+
+# paes = 50
+# preco = float(input("Informe o valor do pão: "))
+# if preco <= 0:
+#     print("Olha o prejuízo Sr Manoel!\n"
+#           "Vamos gerar essa tabelinha novamente.")
+#     exit()
+# i = 1
+# while i <= paes:
+#     print(f"{i} - R$ {i * preco:.2f}")
+#     i += 1
+
+# 31-O Sr. Manoel Joaquim expandiu seus negócios para além dos negócios de 1,99 e agora possui uma loja de conveniências
+# Faça um programa que implemente uma caixa registradora rudimentar.
+# O programa deverá receber um número desconhecido de valores referentes aos preços das mercadorias.
+# Um valor zero deve ser informado pelo operador para indicar o final da compra. O programa deve então mostrar
+# o total da compra e perguntar o valor em dinheiro que o cliente forneceu, para então calcular e mostrar
+# o valor do troco. Após esta operação, o programa deverá voltar ao ponto inicial, para registrar a próxima compra.
+# A saída deve ser conforme o exemplo abaixo:
+#     Lojas Tabajara
+#     Produto 1: R$ 2.20
+#     Produto 2: R$ 5.80
+#     Produto 3: R$ 0
+#     Total: R$ 9.00
+#     Dinheiro: R$ 20.00
+#     Troco: R$ 11.00
+#     ...
+
+# sentinela = " "
+# while sentinela != "X":
+#     produtos = {}
+#     dinheiro = 0
+#     troco = 0
+#     i = 1
+#     while i != 0:
+#         preco = float(input(f"Informe o valor do produto {i}: "))
+#         produtos[i] = preco
+#         i = int(input("Digite o código do próximo produto: "))
+#     total = sum(produtos.values())
+#     print(f"Lojas Tabajara")
+#     a = 1
+#     while a <= len(produtos):
+#         print(f"Produto {a}: R$ {produtos[a]:.2f}")
+#         a += 1
+#     print(f"Total: R$ {total:.2f}")
+#     dinheiro = float(input("Dinheiro: R$ "))
+#     print(f"Troco: R$ {dinheiro-total:.2f}")
+#     sentinela = input("\n\nPróxima compra! ")
+#     sentinela = sentinela.upper()
+
+# 32-Faça um programa que calcule o fatorial de um número inteiro fornecido pelo usuário. Ex.: 5!=5.4.3.2.1=120.
+# A saída deve ser conforme o exemplo abaixo:
+#     Fatorial de: 5
+#     5! =  5 . 4 . 3 . 2 . 1 = 120
+
+# numero = int(input("Digite um número inteiro: "))
+# prox = numero
+# print(f"Fatorial de: {numero}")
+# print(f"{numero}! = {numero}", end="")
+# while numero > 1:
+#     print(f" * {numero - 1}", end="")
+#     prox = prox * (numero - 1)
+#     numero -= 1
+# print(f" = {prox}")
+
+# 33-O Departamento Estadual de Meteorologia lhe contratou para desenvolver um programa que leia
+# um conjunto indeterminado de temperaturas, e informe ao final a menor e a maior temperaturas informadas,
+# bem como a média das temperaturas.
+
+# sentinela = ""
+# temperaturas = []
+# while sentinela != "X":
+#     temp = float(input("Informe uma temperatura: "))
+#     temperaturas.append(temp)
+#     sentinela = input("Pressione enter para digitar mais uma temperatura, ou X para apresentar os resultados: ")
+#     sentinela = sentinela.upper()
+# print(f"\nInformações sobre as temperaturas digitadas!\n"
+#       f"Menor = {min(temperaturas)}\n"
+#       f"Maior = {max(temperaturas)}\n"
+#       f"Média = {sum(temperaturas) / len(temperaturas)}")
+
+# 34-Os números primos possuem várias aplicações dentro da Computação, por exemplo na Criptografia.
+# Um número primo é aquele que é divisível apenas por um e por ele mesmo.
+# Faça um programa que peça um número inteiro e determine se ele é ou não um número primo.
+
+# numero = int(input("Digite um número inteiro: "))
+# i = 1
+# primo = 0
+# while i <= numero:
+#     resto = numero % i
+#     if resto == 0:
+#         primo += 1
+#     i += 1
+# if primo == 2:
+#     print(f"{numero} é primo.")
+# else:
+#     print(f"{numero} não é primo.")
+
+# 35-Encontrar números primos é uma tarefa difícil. Faça um programa que gera uma lista dos números primos existentes
+# entre 1 e um número inteiro informado pelo usuário.
+
+# numero = int(input("Digite um número inteiro: "))
+# num = numero
+# lista_primos = []
+# while numero > 1:
+#     a = numero
+#     i = 1
+#     primo = 0
+#     while i <= numero:
+#         resto = numero % i
+#         if resto == 0:
+#             primo += 1
+#         i += 1
+#     if primo == 2:
+#         lista_primos.append(a)
+#     numero -= 1
+# print(f"Lista de números primos entre 1 e {num}\n"
+#       f"{(sorted(lista_primos))}")
+
+# 36-Desenvolva um programa que faça a tabuada de um número qualquer inteiro que será digitado pelo usuário,
+# mas a tabuada não deve necessariamente iniciar em 1 e terminar em 10, o valor inicial e final
+# devem ser informados também pelo usuário, conforme exemplo abaixo:
+#     Montar a tabuada de: 5
+#     Começar por: 4
+#     Terminar em: 7
+#     Vou montar a tabuada de 5 começando em 4 e terminando em 7:
+#     5 X 4 = 20
+#     5 X 5 = 25
+#     5 X 6 = 30
+#     5 X 7 = 35
+#     Obs: Você deve verificar se o usuário não digitou o final menor que o inicial.
+
+# tabuada = int(input("Montar tabuada de: "))
+# if tabuada != 0:
+#     inicio = int(input("Começar por: "))
+#     fim = int(input("Terminar em: "))
+#
+#     if inicio <= fim:
+#         print(f"Vou montar a tabuada de {tabuada}, começando em {inicio} e terminando em {fim}:")
+#         while inicio <= fim:
+#             print(f"{tabuada} X {inicio} = {tabuada * inicio}")
+#             inicio += 1
+#     else:
+#         print("O número final deve ser maior que o inicial.")
+# else:
+#     print("Todo número multiplicado por zero é zero!")
+
+# 37-Uma academia deseja fazer um senso entre seus clientes para descobrir o mais alto, o mais baixo,
+# a mais gordo e o mais magro, para isto você deve fazer um programa que pergunte a cada um dos clientes da academia
+# seu código, sua altura e seu peso. O final da digitação de dados deve ser dada quando o usuário digitar 0 (zero)
+# no campo código. Ao encerrar o programa também deve ser informados os códigos e valores do clente mais alto,
+# do mais baixo, do mais gordo e do mais magro, além da média das alturas e dos pesos dos clientes
+
+# Programa sem os códigos dos clientes
+# clientes = {}
+# codigo = ""
+# while codigo != 0:
+#     info = []
+#     codigo = int(input("Informe o código do cliente: "))
+#     if codigo != 0:
+#         altura = float(input(f"Informe a altura do cliente {codigo}: "))
+#         info.append(altura)
+#         peso = float(input(f"Informe o peso do cliente {codigo}: "))
+#         info.append(peso)
+#         clientes[codigo] = info
+# print(clientes)
+# alturas = []
+# pesos = []
+# for i in clientes.values():
+#     alturas.append(i[0])
+#     pesos.append(i[1])
+#     print(i)
+# print(f"Maior altura: {max(alturas)}    Menor altura: {min(alturas)}")
+# print(f"Maior peso: {max(pesos)}    Menor peso: {min(pesos)}")
+# print(f"Média das alturas: {sum(alturas) / len(alturas)}")
+# print(f"Média dos pesos: {sum(pesos) / len(pesos)}")
+
+# # Programa com códigos dos clientes
+# clientes = {}
+# codigo = ""
+# while codigo != 0:
+#     info = []
+#     codigo = int(input("Informe o código do cliente: "))
+#     if codigo != 0:
+#         altura = float(input(f"Informe a altura do cliente {codigo}: "))
+#         info.append(altura)
+#         peso = float(input(f"Informe o peso do cliente {codigo}: "))
+#         info.append(peso)
+#         imc = round(peso / (altura * altura),1)
+#         info.append(imc)
+#         clientes[codigo] = info
+# x = 0
+# mais_alto = 0
+# mais_baixo = 0
+# mais_gordo = 0
+# mais_magro = 0
+# alto = 1
+# baixo = 1
+# gordo = 1
+# magro = 1
+# alturas = []
+# pesos = []
+# for i in clientes:
+#     if x == 0:
+#         mais_alto = clientes[i][0]
+#         mais_baixo = clientes[i][0]
+#         mais_gordo = clientes[i][2]
+#         mais_magro = clientes[i][2]
+#     x += 1
+#     if mais_alto < clientes[i][0]:
+#         mais_alto = clientes[i][0]
+#         alto = i
+#     if mais_baixo > clientes[i][0]:
+#         mais_baixo = clientes[i][0]
+#         baixo = i
+#     if mais_gordo < clientes[i][2]:
+#         mais_magro = clientes[i][2]
+#         gordo = i
+#     if mais_magro > clientes[i][2]:
+#         mais_magro = clientes[i][2]
+#         magro = i
+#     alturas.append(clientes[i][0])
+#     pesos.append(clientes[i][1])
+# print(f"Cliente mais alto:  Código: {alto} - Altura: {clientes[alto][0]} - Peso: {clientes[alto][1]} - ICM: {clientes[alto][2]}")
+# print(f"Cliente mais baixo: Código: {baixo} - Altura: {clientes[baixo][0]} - Peso: {clientes[baixo][1]} - ICM: {clientes[baixo][2]}")
+# print(f"Cliente mais gordo: Código: {gordo} - Altura: {clientes[gordo][0]} - Peso: {clientes[gordo][1]} - ICM: {clientes[gordo][2]}")
+# print(f"Cliente mais magro: Código: {magro} - Altura: {clientes[magro][0]} - Peso: {clientes[magro][1]} - ICM: {clientes[magro][2]}")
+# print(f"Média das altura(s) = {sum(alturas) / len(alturas):.2f}\n"
+#       f"Peso médio = {round(sum(pesos) / len(pesos),1)}")
+
+# 38-Um funcionário de uma empresa recebe aumento salarial anualmente: Sabe-se que:
+#     a - Esse funcionário foi contratado em 1995, com salário inicial de R$ 1.000,00;
+#     b - Em 1996 recebeu aumento de 1,5% sobre seu salário inicial;
+#     c - A partir de 1997 (inclusive), os aumentos salariais sempre correspondem ao dobro do percentual do ano anterior.
+#     Faça um programa que determine o salário atual desse funcionário.
+#     Após concluir isto, altere o programa permitindo que o usuário digite o salário inicial do funcionário.
+
+# # salario_inicial = 1000
+# salario_inicial = float(input("Informe o salário inicial: "))
+# salario_atual = salario_inicial
+# aumento = 0.015
+# i = 1996
+# while i <= 2024:
+#     salario_atual = salario_atual + (salario_atual * aumento)
+#     if salario_atual > 1000000000000:
+#         salario = salario_atual / 1000000000000
+#         print(f"{i}  {aumento}  {salario:.2f} trillão")
+#     elif salario_atual > 1000000000:
+#         salario = salario_atual / 1000000000
+#         print(f"{i}  {aumento}  {salario:.2f} billão")
+#     elif salario_atual > 1000000:
+#         salario = salario_atual / 1000000
+#         print(f"{i}  {aumento}  {salario:.2f} millão")
+#     elif salario_atual > 1000:
+#         salario = salario_atual / 1000
+#         print(f"{i}  {aumento}  {salario:.2f} mil")
+#     else:
+#         print(f"{i}  {aumento}  {salario_atual:.2f}")
+#     aumento = aumento * 2
+#     i += 1
+
+# 39-Faça um programa que leia dez conjuntos de dois valores, o primeiro representando o número do aluno
+# e o segundo representando a sua altura em centímetros. Encontre o aluno mais alto e o mais baixo.
+# Mostre o número do aluno mais alto e o número do aluno mais baixo, junto com suas alturas.
+
+# alunos = {}
+# codigo = 0
+# while len(alunos) < 2:
+#     codigo = int(input(f"Caso o código já exista, a altura será alterada.\n"
+#                        f"Digite o código do aluno: "))
+#     altura = int(input(f"Digite a altura do aluno: "))
+#     alunos[codigo] = altura
+# maior = alunos[codigo]
+# menor = alunos[codigo]
+# ma = 0
+# me = 0
+# for x in alunos:
+#     if maior <= alunos[x]:
+#         maior = alunos[x]
+#         ma = x
+#     if menor >= alunos[x]:
+#         menor = alunos[x]
+#         me = x
+# print(alunos)
+# print(f"Maior aluno = código: {ma}  altura: {alunos[ma]}\n"
+#       f"Menor aluno = código: {me}  altura: {alunos[me]}")
+
+# 40-Foi feita uma estatística em cinco cidades brasileiras para coletar dados sobre acidentes de trânsito.
+# Foram obtidos os seguintes dados:
+#     Código da cidade;
+#     Número de veículos de passeio (em 1999);
+#     Número de acidentes de trânsito com vítimas (em 1999). Deseja-se saber:
+#     Qual o maior e menor índice de acidentes de transito e a que cidade pertence;
+#     Qual a média de veículos nas cinco cidades juntas;
+#     Qual a média de acidentes de trânsito nas cidades com menos de 2.000 veículos de passeio.
+
+info = {}
+while len(info) < 3:
+    mais_info = []
+    codigo_cidade = int(input("Informe o código da cidade: "))
+    numero_veiculos = int(input("Informe o número de veículos: "))
+    mais_info.append(numero_veiculos)
+    numero_acidades = int(input("Informe o número de acidentes: "))
+    mais_info.append(numero_acidades)
+    info[codigo_cidade] = mais_info
+print(info)
