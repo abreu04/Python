@@ -805,13 +805,511 @@
 #     Qual a média de veículos nas cinco cidades juntas;
 #     Qual a média de acidentes de trânsito nas cidades com menos de 2.000 veículos de passeio.
 
-info = {}
-while len(info) < 3:
-    mais_info = []
-    codigo_cidade = int(input("Informe o código da cidade: "))
-    numero_veiculos = int(input("Informe o número de veículos: "))
-    mais_info.append(numero_veiculos)
-    numero_acidades = int(input("Informe o número de acidentes: "))
-    mais_info.append(numero_acidades)
-    info[codigo_cidade] = mais_info
-print(info)
+# info = {}
+# while len(info) < 3:
+#     mais_info = []
+#     codigo_cidade = int(input("Informe o código da cidade: "))
+#     numero_veiculos = int(input("Informe o número de veículos: "))
+#     mais_info.append(numero_veiculos)
+#     numero_acidades = int(input("Informe o número de acidentes: "))
+#     mais_info.append(numero_acidades)
+#     indice_acidentes = round((numero_acidades / numero_veiculos) * 100,1)
+#     mais_info.append(indice_acidentes)
+#     info[codigo_cidade] = mais_info
+#
+# print(info)
+# maior = 0
+# menor = 0
+# ma = 0
+# me = 0
+# x = 1
+# veiculos = []
+# acidentes = []
+# for i in info:
+#     if x == 1:
+#         maior = info[i][2]
+#         menor = info[i][2]
+#         ma = i
+#         me = i
+#     x += 1
+#     if maior < info[i][2]:
+#         maior = info[i][2]
+#         ma = i
+#     if menor > info[i][2]:
+#         menor = info[i][2]
+#         me = i
+#     if info[i][0] < 2000:
+#         acidentes.append(info[i][1])
+#     veiculos.append(info[i][0])
+#
+# print(f"\nMaior índice de acidentes: {info[ma][2]}, pertence a cidade: {ma}")
+# print(f"Menor índice de acidentes: {info[me][2]}, pertence a cidade: {me}")
+# print(f"A média de veículos, nas cinco cidades, é igual a {sum(veiculos) / len(veiculos):.1f}")
+# print(f"A média de acidentes, nas cidades com menos de 2000 veículos, é igual a {sum(acidentes) / len(acidentes):.1f}")
+
+# 41-Faça um programa que receba o valor de uma dívida e mostre uma tabela com os seguintes dados:
+# valor da dívida, valor dos juros, quantidade de parcelas e valor da parcela.
+#     Os juros e a quantidade de parcelas seguem a tabela abaixo:
+#     Quantidade de Parcelas  % de Juros sobre o valor inicial da dívida
+#     1       0
+#     3       10
+#     6       15
+#     9       20
+#     12      25
+# Exemplo de saída do programa:
+# Valor da Dívida Valor dos Juros Quantidade de Parcelas  Valor da Parcela
+# R$ 1.000,00     0               1                       R$  1.000,00
+# R$ 1.100,00     100             3                       R$    366,00
+# R$ 1.150,00     150             6                       R$    191,67
+
+# valor_divida = 1000
+# numero_parcelas = 1
+# valor_juros = 0
+# valor_parcela = 0
+#
+# while numero_parcelas <= 12:
+#     if numero_parcelas == 1:
+#         valor_juros = valor_divida * 0
+#     elif numero_parcelas == 3:
+#         valor_juros = valor_divida * 0.1
+#     elif numero_parcelas == 6:
+#         valor_juros = valor_divida * 0.15
+#     elif numero_parcelas == 9:
+#         valor_juros = valor_divida * 0.2
+#     else:
+#         valor_juros = valor_divida * 0.25
+#
+#     if numero_parcelas == 1:
+#         valor_parcela = (valor_divida + valor_juros) / numero_parcelas
+#         print(f"Valor da Dívida   Valor dos Juros   Quantidade de Parcelas   Valor da Parcela\n"
+#               f"R$ {valor_divida:.2f} {valor_juros:>11.2f} {numero_parcelas:>14} {valor_parcela:>30.2f}")
+#         numero_parcelas += 2
+#     else:
+#         valor_parcela = (valor_divida + valor_juros) / numero_parcelas
+#         if 1 < numero_parcelas < 12:
+#             print(
+#                 f"R$ {valor_divida + valor_juros:.2f} {valor_juros:>13.2f} {numero_parcelas:>12} {valor_parcela:>29.2f}")
+#             numero_parcelas += 3
+#         else:
+#             print(
+#                 f"R$ {valor_divida + valor_juros:.2f} {valor_juros:>13.2f} {numero_parcelas:>13} {valor_parcela:>28.2f}")
+#             numero_parcelas += 3
+
+# 42-Faça um programa que leia uma quantidade indeterminada de números positivos e conte
+# quantos deles estão nos seguintes intervalos: [0-25], [26-50], [51-75] e [76-100].
+# A entrada de dados deverá terminar quando for lido um número negativo.
+
+# lista_numeros = []
+# numero = 0
+# print("\nDigite um número negativo para encerrar a digitação!")
+# while numero >= 0:
+#     numero = float(input("Digite um número positivo: "))
+#     if numero >= 0:
+#         lista_numeros.append(numero)
+# print(lista_numeros)
+# intervalo1 = 0
+# intervalo2 = 0
+# intervalo3 = 0
+# intervalo4 = 0
+# fora_intervalo = 0
+# for i in lista_numeros:
+#     if 0 <= i <=25:
+#         intervalo1 += 1
+#     elif 26 <= i <= 50:
+#         intervalo2 += 1
+#     elif 51 <= i <= 75:
+#         intervalo3 += 1
+#     elif 76 <= i <= 100:
+#         intervalo4 += 1
+#     else:
+#         fora_intervalo += 1
+# print(f"Intervalos{"":>19}Qantidades de números\n"
+#       f"0-25 {intervalo1:>26}\n"
+#       f"26-50 {intervalo2:>25}\n"
+#       f"51-75 {intervalo3:>25}\n"
+#       f"76-100 {intervalo4:>24}\n"
+#       f"Fora dos intervalaos {fora_intervalo:>10}")
+
+# 43-O cardápio de uma lanchonete é o seguinte:
+#     Especificação   Código  Preço
+#     Cachorro Quente 100     R$ 1,20
+#     Bauru Simples   101     R$ 1,30
+#     Bauru com ovo   102     R$ 1,50
+#     Hambúrguer      103     R$ 1,20
+#     Cheeseburguer   104     R$ 1,30
+#     Refrigerante    105     R$ 1,00
+#     Faça um programa que leia o código dos itens pedidos e as quantidades desejadas.
+#     Calcule e mostre o valor a ser pago por item (preço * quantidade) e o total geral do pedido.
+#     Considere que o cliente deve informar quando o pedido deve ser encerrado.
+
+# lanchonete = {100: ["Cachorro Quente", 1.20], 101: ["Bauru Simples", 1.30], 102: ["Bauru com ovo", 1.50],
+#               103: ["Hambúrguer", 1.20], 104: ["Cheeseburguer", 1.30], 105: ["Refrigerante", 1.00]}
+# print(f"Especificação{"":>5}Código{"":>5}Preço")
+# for i in lanchonete:
+#     a = 20 - len(lanchonete[i][0])
+#     print(f"{lanchonete[i][0]} {i:>{a}} {lanchonete[i][1]:>11.2f}")
+# print(f"\nDigite 0 para encerrar o pedido!")
+# pedido = {}
+# codigo = ""
+# while codigo != 0:
+#     codigo = int(input("Digite o código do produto: "))
+#     if codigo != 0:
+#         quantidade = int(input(f"Digite a quantidade do produto {codigo}: "))
+#         pedido[codigo] = quantidade
+# print("\n")
+# total = 0
+# for i in pedido:
+#     for n in lanchonete:
+#         if i == n:
+#             a = 17 - len(lanchonete[n][0])
+#             valor = pedido[i] * lanchonete[n][1]
+#             print(f"{lanchonete[n][0]} {pedido[i]:>{a}} x {lanchonete[n][1]:.2f} {valor:>5.2f}")
+#             total = total + valor
+# print(f"Total do Pedido  R$ {total:.2f}")
+
+# 44-Em uma eleição presidencial existem quatro candidatos. Os votos são informados por meio de código.
+# Os códigos utilizados são: 1 , 2, 3, 4  - Votos para os respectivos candidatos
+#     (você deve montar a tabela ex: 1 - Jose/ 2- João/etc)
+#     5 - Voto Nulo
+#     6 - Voto em Branco
+#     Faça um programa que calcule e mostre:
+#     O total de votos para cada candidato;
+#     O total de votos nulos;
+#     O total de votos em branco;
+#     A percentagem de votos nulos sobre o total de votos;
+#     A percentagem de votos em branco sobre o total de votos. Para finalizar o conjunto de votos tem-se o valor zero.
+
+# eleicao = {1: ["José", 0], 2: ["João", 0], 3: ["Maria", 0], 4: ["Antônia", 0], 5: ["Nulo", 0], 6: ["Em Branco", 0]}
+# voto = ""
+# total = 0
+# while voto != 0:
+#     for i in eleicao:
+#         print(f"{i} - {eleicao[i][0]}")
+#     voto = int(input("Digite o número correspondente a opção desejada: "))
+#     if voto != 0:
+#         if 0 < voto <= 6:
+#             eleicao[voto][1] += 1
+#             total += 1
+#         else:
+#             print("Opção inexistente!")
+# for i in eleicao:
+#     a = 15 - len(eleicao[i][0])
+#     print(f"{eleicao[i][0]} {eleicao[i][1]:>{a}} votos")
+# print(f"Os votos nulos correspondem a {(eleicao[5][1] / total) * 100:.1f}% dos votos válidos.")
+# print(f"Os votos em branco correspondem a {(eleicao[6][1] / total) * 100:.1f}% dos votos válidos.")
+
+# 45-Desenvolver um programa para verificar a nota do aluno em uma prova com 10 questões,
+# o programa deve perguntar ao aluno a resposta de cada questão e ao final comparar com o gabarito da prova
+# e assim calcular o total de acertos e a nota (atribuir 1 ponto por resposta certa).
+# Após cada aluno utilizar o sistema deve ser feita uma pergunta se outro aluno vai utilizar o sistema.
+# Após todos os alunos terem respondido informar:
+#     a - Maior e Menor Acerto;
+#     b - Total de Alunos que utilizaram o sistema;
+#     c - A Média das Notas da Turma.
+#     Gabarito da Prova:
+#     01 - A
+#     02 - B
+#     03 - C
+#     04 - D
+#     05 - E
+#     06 - E
+#     07 - D
+#     08 - C
+#     09 - B
+#     10 - A
+#     Após concluir isto você poderia incrementar o programa
+#     permitindo que o professor digite o gabarito da prova antes dos alunos usarem o programa.
+
+# gabarito = {1: "A", 2: "B", 3: "C", 4: "D", 5: "E", 6: "E", 7: "D", 8: "C", 9: "B", 10: "A"}
+# alunos = {}
+# codigo = " "
+# while codigo != "0":
+#     print("\nPara encerrar a digitação digite 0!")
+#     codigo = input("Aluno, para responder a avaliação, informe seu código: ")
+#     if codigo != "0":
+#         respostas = {1: "", 2: "", 3: "", 4: "", 5: "", 6: "", 7: "", 8: "", 9: "", 10: ""}
+#         p = 1
+#         print(f"Boa sorte, {codigo}!")
+#         while p <= len(respostas):
+#             resposta = input(f"Digite a resposta da questão {p}: ")
+#             resposta = resposta.upper()
+#             if resposta == "A" or resposta == "B" or resposta == "C" or resposta == "D" or resposta == "E":
+#                 respostas[p] = resposta
+#                 p += 1
+#             else:
+#                 print("Opção inválida!")
+#         nota = 0
+#         i = 1
+#         while i <= 10:
+#             if respostas[i] == gabarito[i]:
+#                 nota += 1
+#             i += 1
+#         respostas["Nota"] = nota
+#         alunos[codigo] = respostas
+# maior = 0
+# menor = len(gabarito)
+# codigo_maior = []
+# codigo_menor = []
+# notas = []
+# for i in alunos:
+#     notas.append(alunos[i]["Nota"])
+#     for a in alunos[i]:
+#         print(i, a, alunos[i][a])
+#     if maior <= alunos[i]["Nota"]:
+#         if maior == alunos[i]["Nota"]:
+#             codigo_maior.append(i)
+#         else:
+#             codigo_maior = []
+#             codigo_maior.append(i)
+#         maior = alunos[i]["Nota"]
+#     if menor >= alunos[i]["Nota"]:
+#         if menor == alunos[i]["Nota"]:
+#             codigo_menor.append(i)
+#         else:
+#             codigo_menor = []
+#             codigo_menor.append(i)
+#         menor = alunos[i]["Nota"]
+#
+#     print("\n")
+# print(f"Maior nota = {maior}")
+# for i in codigo_maior:
+#     print(f"Aluno: {i}")
+# print(f"Menor nota = {menor}")
+# for i in codigo_menor:
+#     print(f"Aluno: {i}")
+# print(f"Número de Alunos que responderam a avaliação = {len(notas)}")
+# print(f"Média das Notas obtidas = {sum(notas) / len(notas)}")
+
+# # Programa com indicacao de respostas corretas e erradas, e gabarito montado pelo Professor
+# print(f"Olá Professor! Vamos montar o Gabarito da Avaliação.")
+# lista_alternativas = []
+# a = 1
+# alternativa = " "
+# print("Para encerrar a digitação das ALTERNATIVAS, pressione Enter!")
+# while alternativa != "":
+#     alternativa = input("Digite uma alternativa de respospa: ").upper()
+#     if alternativa not in lista_alternativas and alternativa != "":
+#         lista_alternativas.append(alternativa)
+#     else:
+#         print("Alternativa já existe!")
+# print(lista_alternativas)
+#
+# gabarito = {}
+# p = 1
+# resposta = " "
+# print(f"Professor, agora, informe a alternativa correta de cada questão!")
+# print("Para encerrar a digitação das QUESTÕES, pressione Enter!")
+# while resposta != "":
+#     resposta = input(f"Digite a resposta da questão {p}: ").upper()
+#     if resposta != "":
+#         if resposta in lista_alternativas:
+#             gabarito[p] = resposta
+#             p += 1
+#         else:
+#             print("Esta alternativa não foi definida!")
+# print(gabarito)
+#
+# alunos = {}
+# codigo = " "
+# notas = []
+# while codigo != "0":
+#     print("\nAlunos! Para encerrar a digitação digite 0!")
+#     codigo = input("Para responder a avaliação, informe seu código: ")
+#     if codigo != "0":
+#         respostas = {}
+#         p = 1
+#         nota = 0
+#         print(f"Boa sorte, {codigo}!")
+#         while p <= len(gabarito):
+#             resposta_correcao = []
+#             resposta = input(f"Digite a resposta da questão {p}: ").upper()
+#             if resposta in lista_alternativas:
+#                 if resposta == gabarito[p]:
+#                     resposta_correcao.append(resposta)
+#                     resposta_correcao.append("Correta")
+#                     nota += 1
+#                 else:
+#                     resposta_correcao.append(resposta)
+#                     resposta_correcao.append("Incorreta")
+#                 respostas[p] = resposta_correcao
+#                 p += 1
+#             else:
+#                 print("Alternativa inexistente!")
+#         respostas["Nota"] = nota
+#         alunos[codigo] = respostas
+# print("\n")
+# maior = 0
+# menor = len(gabarito)
+# codigo_maior = []
+# codigo_menor = []
+#
+# for i in alunos:
+#     notas.append(alunos[i]["Nota"])
+#     print(gabarito)
+#     for a in alunos[i]:
+#         print(i, a, alunos[i][a])
+#     if maior <= alunos[i]["Nota"]:
+#         if maior == alunos[i]["Nota"]:
+#             codigo_maior.append(i)
+#         else:
+#             codigo_maior = []
+#             codigo_maior.append(i)
+#         maior = alunos[i]["Nota"]
+#     if menor >= alunos[i]["Nota"]:
+#         if menor == alunos[i]["Nota"]:
+#             codigo_menor.append(i)
+#         else:
+#             codigo_menor = []
+#             codigo_menor.append(i)
+#         menor = alunos[i]["Nota"]
+#     print("\n")
+# print(f"Maior nota = {maior}")
+# for i in codigo_maior:
+#     print(f"Aluno: {i}")
+# print(f"Menor nota = {menor}")
+# for i in codigo_menor:
+#     print(f"Aluno: {i}")
+# print(f"Número de Alunos que responderam a avaliação = {len(notas)}")
+# print(f"Média das Notas obtidas = {sum(notas) / len(notas)}")
+
+# 46-Em uma competição de salto em distância cada atleta tem direito a cinco saltos.
+# No final da série de saltos de cada atleta, o melhor e o pior resultados são eliminados.
+# O seu resultado fica sendo a média dos três valores restantes.
+# Você deve fazer um programa que receba o nome e as cinco distâncias alcançadas pelo atleta em seus saltos
+# e depois informe a média dos saltos conforme a descrição acima informada (retirar o melhor e o pior salto
+# e depois calcular a média). Faça uso de uma lista para armazenar os saltos.
+# Os saltos são informados na ordem da execução, portanto não são ordenados.
+# O programa deve ser encerrado quando não for informado o nome do atleta.
+# A saída do programa deve ser conforme o exemplo abaixo:
+# Atleta: Rodrigo Curvêllo
+# Primeiro Salto: 6.5 m
+# Segundo Salto: 6.1 m
+# Terceiro Salto: 6.2 m
+# Quarto Salto: 5.4 m
+# Quinto Salto: 5.3 m
+#
+# Melhor salto:  6.5 m
+# Pior salto: 5.3 m
+# Média dos demais saltos: 5.9 m
+#
+# Resultado final:
+# Rodrigo Curvêllo: 5.9 m
+
+# competicao = {}
+# atleta = " "
+# while atleta != "":
+#     atleta = input("Informe o nome do Atleta: ")
+#     if atleta != "":
+#         lista_saltos = []
+#         i = 1
+#         while i <= 5:
+#             lista_saltos.append(float(input(f"Digite a altura do salto {i}: ")))
+#             i += 1
+#         competicao[atleta] = lista_saltos
+# media = 0
+# saltos_final = []
+#
+# for s in competicao:
+#     print(f"Atleta: {s}\n\n"
+#           f"Primeiro Salto: {competicao[s][0]} m\n"
+#           f"Segundo Salto: {competicao[s][1]} m\n"
+#           f"Terceiro Salto: {competicao[s][2]} m\n"
+#           f"Quarto Salto: {competicao[s][3]} m\n"
+#           f"Quinto Salto: {competicao[s][4]} m\n")
+#     saltos_final = competicao[s]
+#     saltos_final.sort()
+#     print(f"Melhor salto: {saltos_final.pop(-1)} m")
+#     print(f"Pior salto: {saltos_final.pop(0)} m")
+#     media = sum(saltos_final) / len(saltos_final)
+#     print(f"Média dos demais saltos : {media:.1f} m")
+#     print(f"Resultado Final:\n"
+#           f"{s}: {media:.1f} m\n")
+
+# 47-Em uma competição de ginástica, cada atleta recebe votos de sete jurados. A melhor e a pior nota são eliminadas.
+# A sua nota fica sendo a média dos votos restantes. Você deve fazer um programa que receba o nome do ginasta
+# e as notas dos sete jurados alcançadas pelo atleta em sua apresentação e depois informe a sua média,
+# conforme a descrição acima informada (retirar o melhor e o pior salto e depois calcular a média
+# com as notas restantes). As notas não são informados ordenadas.
+# Um exemplo de saída do programa deve ser conforme o exemplo abaixo:
+# Atleta: Aparecido Parente
+# Nota: 9.9
+# Nota: 7.5
+# Nota: 9.5
+# Nota: 8.5
+# Nota: 9.0
+# Nota: 8.5
+# Nota: 9.7
+# Resultado final:
+# Atleta: Aparecido Parente
+# Melhor nota: 9.9
+# Pior nota: 7.5
+# Média: 9,04
+
+# competicao_ginastica = {}
+# atleta = " "
+# while atleta != "":
+#     print("\nPressione Enter para encerrar a digitação!")
+#     atleta = input("Digite o nome do Atleta: ")
+#     if atleta != "":
+#         notas = []
+#         i = 1
+#         while i <= 7:
+#             notas.append(float(input(f"Digite a nota {i}: ")))
+#             competicao_ginastica[atleta] = notas
+#             i += 1
+# notas_finais = []
+# for i in competicao_ginastica:
+#     print(f"Atleta: {i}")
+#     notas_finais = competicao_ginastica[i]
+#     for n in notas_finais:
+#         print(f"Nota: {n}")
+#     notas_finais.sort()
+#     print(f"Resultado final:\n"
+#           f"Atleta: {i}\n"
+#           f"Melhor nota: {notas_finais.pop(-1)}\n"
+#           f"Pior nota: {notas_finais.pop(0)}\n"
+#           f"Média: {sum(notas_finais) / len(notas_finais):.1f}\n")
+
+# 48-Faça um programa que peça um numero inteiro positivo e em seguida mostre este numero invertido.
+#     Exemplo:
+#       12376489
+#       => 98467321
+
+# numero = int(input("Digite um número inteiro positivo: "))
+# num = numero
+# invertido = 0
+# while numero > 0:
+#     resto = numero % 10
+#     invertido = (invertido * 10) + resto
+#     numero = int(numero / 10)
+# print(f"Número: {num}\n"
+#       f"Número invertido: {invertido}")
+
+# 49-Faça um programa que mostre os n termos da Série a seguir:
+#     S = 1/1 + 2/3 + 3/5 + 4/7 + 5/9 + ... + n/m.
+#     Imprima no final a soma da série.
+
+# numero = int(input("Digite um número inteiro positivo: "))
+# n = 1
+# soma = 0
+# print(f"Soma = {n}/{n} ", end="")
+# while n <= numero:
+#     soma = soma + (n / ((n - 1) + n))
+#     n += 1
+#     if n <= numero:
+#         print(f"+ {n}/{(n-1)+n}", end=" ")
+# print(f"+ ... + n/(n-1)+n")
+# print(f"Soma = {soma:.1f}")
+
+# 50-Sendo H= 1 + 1/2 + 1/3 + 1/4 + ... + 1/N, Faça um programa que calcule o valor de H com N termos.
+
+numero = 10
+n = 1
+h = 0
+print(f"H = {int(1/n)}", end="")
+while n <= numero:
+    h = h + 1/n
+    n += 1
+    if n <= numero:
+        print(f" + 1/{n}", end="")
+print(f"\nPara N = {numero}, H = {h:.1f}")
