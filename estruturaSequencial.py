@@ -196,8 +196,8 @@
 
 # 18-Faça um programa que peça o tamanho de um arquivo para download (em MB) e a velocidade de um link
 # de Internet (em Mbps), calcule e informe o tempo aproximado de download do arquivo usando este link (em minutos)
-tamanho_arquivo = float(input("Informe o tamanho (em MB) do arquivo que deseja fazer o download: "))
-velocidade_link = float(input("Informe a velocidade (em Mbps) da internet que será usada: "))
-tempo_download_seg = tamanho_arquivo / (velocidade_link/ 8)
-tempo_download_min = tempo_download_seg / 60
-print(f"O download de {tamanho_arquivo}MB no link de {velocidade_link}Mbps levará aproximadamente {round(tempo_download_min,1)} minutos.")
+# tamanho_arquivo = float(input("Informe o tamanho (em MB) do arquivo que deseja fazer o download: "))
+# velocidade_link = float(input("Informe a velocidade (em Mbps) da internet que será usada: "))
+# tempo_download_seg = tamanho_arquivo / (velocidade_link/ 8)
+# tempo_download_min = tempo_download_seg / 60
+# print(f"O download de {tamanho_arquivo}MB no link de {velocidade_link}Mbps levará aproximadamente {round(tempo_download_min,1)} minutos.")
