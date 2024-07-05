@@ -1,3 +1,5 @@
+import random
+
 # 1-Tamanho de strings.
 # Faça um programa que leia 2 strings e informe o conteúdo delas seguido do seu comprimento.
 # Informe também se as duas strings possuem o mesmo comprimento e são iguais ou diferentes no conteúdo.
@@ -231,7 +233,7 @@
 # 11-Jogo de Forca.
 # Desenvolva um jogo da forca. O programa terá uma lista de palavras lidas de um arquivo texto
 # e escolherá uma aleatoriamente. O jogador poderá errar 6 vezes antes de ser enforcado
-#      Digite uma letra: A
+#     Digite uma letra: A
 #     -> Você errou pela 1ª vez. Tente de novo!
 #
 #     Digite uma letra: O
@@ -243,7 +245,54 @@
 #     Digite uma letra: S
 #     -> Você errou pela 2ª vez. Tente de novo!
 
-
+# with open("JogoDaForca.txt", "w") as arquivo:
+#     arquivo.write("JOGADOR\nJOGADA\nLUGAR\nTABULEIRO\nVENCEDOR\n")
+#
+# with open("JogoDaForca.txt", "r") as arquivo:
+#     conteudo = arquivo.readlines()
+#
+# lista_palavras = []
+# for i in conteudo:
+#     i = i[:len(i)-1]
+#     lista_palavras.append(i)
+#
+# index = random.randint(0, len(lista_palavras) - 1)
+# palavra = lista_palavras[index]
+# # print(palavra)
+# erro = 0
+# chute = ""
+# chutes = []
+# i = 0
+# while i < len(palavra):
+#     chute = chute + "_"
+#     i += 1
+# print(chute)
+# while chute != palavra:
+#     letra = input("Digite uma letra: ").upper()
+#     if letra not in chutes:
+#         chutes.append(letra)
+#         if letra in palavra:
+#             i = 0
+#             while i < len(palavra):
+#                 if letra == palavra[i]:
+#                     chute = chute[:i] + letra + chute[i+1:]
+#                 i += 1
+#             print(chute)
+#         else:
+#             erro += 1
+#             if erro < 6:
+#                 print(f"Você errou pela {erro}ª vez. Tente de novo!")
+#             else:
+#                 print(f"Você errou pela {erro}ª vez.")
+#                 chute = input("Última chance! Chute a palavra completa: ").upper()
+#                 if chute != palavra:
+#                     print("Você perdeu o jogo da forca :(")
+#                     break
+#     else:
+#         print("Letra repetida, chute outra.")
+# if chute == palavra:
+#     print(f"\nParabéns! Você ganhou o jogo da forca.\n"
+#           f"Palavra = {chute}")
 
 # 12-Valida e corrige número de telefone.
 # Faça um programa que leia um número de telefone, e corrija o número no caso deste conter somente 7 dígitos,
@@ -254,11 +303,70 @@
 #     Telefone corrigido sem formatação: 34610133
 #     Telefone corrigido com formatação: 3461-0133
 
+# telefone = input("Digite um número de telefone fixo, com ou sem traço: ")
+# if len(telefone) < 9:
+#     tel_numeros = ""
+#     for i in telefone:
+#         if i != "-":
+#             tel_numeros = tel_numeros + i
+#     tel_corrigido = ""
+#     if len(tel_numeros) == 7:
+#         tel_corrigido = "3" + tel_numeros
+#     else:
+#         tel_corrigido = tel_numeros
+#     tel_formatado = tel_corrigido[:4] + "-" + tel_corrigido[4:]
+#     if len(tel_numeros) == 7:
+#         print(f"Telefone corrigido sem formatação: {tel_corrigido}")
+#         print(f"Telefone corrigido com formatação: {tel_formatado}")
+#     else:
+#         print(f"Telefone sem formatação: {tel_numeros}")
+#         print(f"Telefone com formatação: {tel_formatado}")
+# else:
+#     print(f"Telefone sem formatação: {telefone}")
+#     print(f"Telefone com formatação: {telefone}")
+
 # 13-Jogo da palavra embaralhada.
 # Desenvolva um jogo em que o usuário tenha que adivinhar uma palavra que será mostrada com as letras embaralhadas.
 # O programa terá uma lista de palavras lidas de um arquivo texto e escolherá uma aleatoriamente.
 # O jogador terá seis tentativas para adivinhar a palavra. Ao final a palavra deve ser mostrada na tela,
 # informando se o usuário ganhou ou perdeu o jogo.
+
+# with open("JogoPalavraEmbaralhada.txt", "w") as arquivo:
+#     arquivo.write("ARMAZEM\nRIACHO\nCIDADE\nFAZENDA\nBERÇARIO\nVILAREJO\n")
+#
+# with open("JogoPalavraEmbaralhada.txt", "r") as arquivo:
+#     conteudo = arquivo.readlines()
+#
+# lista_palavras = []
+# for i in conteudo:
+#     i = i[:len(i)-1]
+#     lista_palavras.append(i)
+# index = random.randint(0, len(lista_palavras)-1)
+# palavra = lista_palavras[index]
+# palavra_embaralhada = ""
+# # print(palavra)
+# pos = []
+# while len(palavra_embaralhada) != len(palavra):
+#     p = random.randint(0, len(palavra)-1)
+#     if p not in pos:
+#         pos.append(p)
+#         palavra_embaralhada = palavra_embaralhada + palavra[p]
+# print(f"\n{palavra_embaralhada}\n")
+# palpite = ""
+# chances = 0
+# while palpite != palavra:
+#     chances += 1
+#     if chances <= 6:
+#         palpite = input("Qual é a palavra? ").upper()
+#         if palpite == palavra:
+#             print(f"Parabéns, Você acertou!\n"
+#                   f"Palavra = {palpite}")
+#         else:
+#             print(f"Você errou pela {chances}° vez.")
+#     else:
+#         print(f"Acabaram as chances, você não acertou!\n"
+#               f"Palavra = {palavra}")
+#         break
 
 # 14-Leet spek generator.
 # Leet é uma forma de se escrever o alfabeto latino usando outros símbolos em lugar das letras,
@@ -267,3 +375,18 @@
 # sendo muito usada para confundir os iniciantes e afirmar-se como parte de um grupo.
 # Pesquise sobre as principais formas de traduzir as letras.
 # Depois, faça um programa que peça uma texto e transforme-o para a grafia leet speak.
+
+alfabeto_leet = {"A": ["4", "@"], "B": ["8", "6"], "C": ["[", "("], "D": ["[)", "o|"], "E": ["3", "&"],
+                 "F": ["|=", "ph"], "G": ["C-", "9"], "H": ["|-|", "/-/"], "I": ["1", "!"], "J": ["_/", ";"],
+                 "K": ["|<", "|{"], "L": ["7", "|_"], "M": ["|v|", "^^"], "N": ["//", "^/"], "O": ["0", "()"],
+                 "P": ["|^", "|>"], "Q": ["9", "q"], "R": ["|2", "|?"], "S": ["5", "$"], "T": ["7", "+"],
+                 "U": ["v", "(_)"], "V": ["v"], "W": ["vv"], "X": ["><", ")("], "Y": ["y", "`/"],
+                 "Z": ["2", "z"], " ": [" "]}
+
+texto = input("Digite um texto: ").upper()
+texto_leet = ""
+for l in texto:
+    indice = random.randint(0, len(alfabeto_leet[l])-1)
+    texto_leet = texto_leet + alfabeto_leet[l][indice]
+print(texto)
+print(texto_leet)
