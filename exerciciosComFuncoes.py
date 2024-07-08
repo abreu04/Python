@@ -370,7 +370,7 @@ import random
 # if colunas < 0 or colunas > 20:
 #     colunas = random.randint(a, b)
 #
-# print(linhas, colunas)
+# # print(linhas, colunas)
 # moldura(linhas, colunas)
 
 # 14-Quadrado mágico.
@@ -383,8 +383,66 @@ import random
 # Dica: produza todas as combinações possíveis e verifique a soma quando completar cada quadrado.
 # Usar um vetor de 1 a 9 parece ser mais simples que usar uma matriz 3x3.
 
-numeros = [1, 2, 3]
-dic_combinacoes = {}
+numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 combinacoes = []
 uma_combinacao = []
 
+for pt in numeros:
+    for st in numeros:
+        for tt in numeros:
+            uma_combinacao.append(pt)
+            if st not in uma_combinacao:
+                uma_combinacao.append(st)
+            if tt not in uma_combinacao:
+                uma_combinacao.append(tt)
+            if len(uma_combinacao) == 3 and sum(uma_combinacao) == 15:
+                # print(uma_combinacao)
+                combinacoes.append(uma_combinacao)
+            uma_combinacao = []
+print(f"{combinacoes} \n"
+      f"{len(combinacoes)}")
+
+repeticao_numeros = {}
+for i in combinacoes:
+    for x in i:
+        repeticao_numeros[x] = 0
+for i in combinacoes:
+    for x in i:
+        repeticao_numeros[x] = repeticao_numeros[x] + i.count(x)
+ordenado = {}
+for i in sorted(repeticao_numeros, key=repeticao_numeros.get, reverse=True):
+    ordenado[i] = repeticao_numeros[i]
+print(ordenado)
+
+quadro_magico = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+
+for c in combinacoes:
+    # print(len(quadro_magico))
+    # if len(quadro_magico) <= 3:
+    if 5 in c:
+        if quadro_magico[1][0] == 0:
+            quadro_magico[1] = c
+val = False
+for c in combinacoes:
+    if c not in quadro_magico:
+        for i in c:
+            for n in quadro_magico:
+                if i in n:
+                    val = True
+        if val == False:
+            if quadro_magico[0][0] == 0:
+                quadro_magico[0] = c
+            else:
+                if quadro_magico[2][0] == 0:
+                    quadro_magico[2] = c
+        else:
+            val = False
+
+for c in quadro_magico:
+    for i in c:
+        print(i, end=" ")
+    print()
+
+for i in combinacoes:
+    if 6 in i:
+        print(i, end=" ")
