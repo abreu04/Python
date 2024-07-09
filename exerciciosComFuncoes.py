@@ -383,66 +383,165 @@ import random
 # Dica: produza todas as combinações possíveis e verifique a soma quando completar cada quadrado.
 # Usar um vetor de 1 a 9 parece ser mais simples que usar uma matriz 3x3.
 
-numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-combinacoes = []
-uma_combinacao = []
+# primeira versão do código do quadrado mágico
 
-for pt in numeros:
-    for st in numeros:
-        for tt in numeros:
-            uma_combinacao.append(pt)
-            if st not in uma_combinacao:
-                uma_combinacao.append(st)
-            if tt not in uma_combinacao:
-                uma_combinacao.append(tt)
-            if len(uma_combinacao) == 3 and sum(uma_combinacao) == 15:
-                # print(uma_combinacao)
-                combinacoes.append(uma_combinacao)
-            uma_combinacao = []
-print(f"{combinacoes} \n"
-      f"{len(combinacoes)}")
+# numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+# combinacoes = []
+# uma_combinacao = []
+#
+# for pt in numeros: # primeiro termo da combinação
+#     for st in numeros: # segundo termo
+#         for tt in numeros: # terceiro termo
+#             uma_combinacao.append(pt)
+#             if st not in uma_combinacao:
+#                 uma_combinacao.append(st)
+#             if tt not in uma_combinacao: # verificando apenas se não há repetição dos termos, nas combinações
+#                 uma_combinacao.append(tt) # pois eles podem aparecer em qualquer ordem
+#             if len(uma_combinacao) == 3 and sum(uma_combinacao) == 15:
+#                 combinacoes.append(uma_combinacao) # uma combinação sendo adicionada a lista de possíveis combinações
+#             uma_combinacao = [] # limpando a lista para receber a próxima combinação
+# # print(f"{combinacoes} \n"
+# #       f"{len(combinacoes)}")
+#
+# quantidade_de_combinacoes = []
+# # este for criará uma lista, contendo todas as posições da lista de combinações, para montagem dos quadros
+# for i in range(0, len(combinacoes)):
+#     quantidade_de_combinacoes.append(i)
+#
+# quadro_para_teste = [] # armazenando todos as possíveis quadros, por meio dos indices da lista de combinações
+# um_quadro = []
+# for c1 in quantidade_de_combinacoes:
+#     for c2 in quantidade_de_combinacoes:
+#         for c3 in quantidade_de_combinacoes:
+#             um_quadro.append(c1)
+#             if c2 not in um_quadro:
+#                 um_quadro.append(c2)
+#                 if c3 not in um_quadro:
+#                     um_quadro.append(c3)
+#                 if len(um_quadro) == 3: # um quadro tem apenas 3 itens, pois cada item é a posição de uma combinação
+#                     quadro_para_teste.append(um_quadro) # na lista de combinações
+#                 um_quadro = []
+#
+# quadros_magico_valido = []
+# for indice in quadro_para_teste: # vamos percorres nossa lista de indices para montar nos quadros para validação
+#     quadro_magico = [] # iniciando e reiniciando o quadro para receber o próximo quadro a ser validado
+#     for i in indice: # cada indice é a combinação de 3 posições que formará o quadro
+#         quadro_magico.append(combinacoes[i])
+#     # todas as combinações foram validadas, por isso elas tem 3 números distintos e a soma igual a 15,
+#     # por isso, para validar o quadro, será necessário verificar somente as somas das colunas e das diagonais
+#     if quadro_magico[0][0] + quadro_magico[1][0] + quadro_magico[2][0] == 15:
+#         if quadro_magico[0][0] + quadro_magico[1][1] + quadro_magico[2][2] == 15:
+#             if quadro_magico[0][1] + quadro_magico[1][1] + quadro_magico[2][1] == 15:
+#                 if quadro_magico[0][2] + quadro_magico[1][2] + quadro_magico[2][2] == 15:
+#                     if quadro_magico[0][2] + quadro_magico[1][1] + quadro_magico[2][0] == 15:
+#                         valida_num = []
+#                         for l1 in quadro_magico[0]:
+#                             for l2 in quadro_magico[1]:
+#                                 for l3 in quadro_magico[2]:
+#                                     if l1 == l2 or l2 == l3:
+#                                         valida_num.append(False)
+#                                     else:
+#                                         valida_num.append(True)
+#                         if False not in valida_num:
+#                             quadros_magico_valido.append(quadro_magico)
+#
+# for quadro in quadros_magico_valido:
+#     for c in quadro:
+#         for i in c:
+#             print(i, end=" ")
+#         print()
+#     print()
+#----------------------------------------------------------------------------
+# código do quadrado magico (3x3) organizado em funções
+# funcioando somente para o quadrado 3x3, porque as combinações estão estáticas
+def calcularSomaMagica(tamanho_lado):
+    soma_magica = int((tamanho_lado * ((tamanho_lado * tamanho_lado) + 1)) / 2)
+    return soma_magica
 
-repeticao_numeros = {}
-for i in combinacoes:
-    for x in i:
-        repeticao_numeros[x] = 0
-for i in combinacoes:
-    for x in i:
-        repeticao_numeros[x] = repeticao_numeros[x] + i.count(x)
-ordenado = {}
-for i in sorted(repeticao_numeros, key=repeticao_numeros.get, reverse=True):
-    ordenado[i] = repeticao_numeros[i]
-print(ordenado)
+def criarListaDeNumerosParaCombinacao(tamanho_lado):
+    lista_numeros = []
+    for i in range(0, tamanho_lado * tamanho_lado):
+        lista_numeros.append(i+1)
+    return lista_numeros
 
-quadro_magico = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+def criarCombinacoesComListaDeNumeros(tamanho_lado): # funcionando apenas para combinações de 3 números, quadro 3x3
+    lista_numeros = criarListaDeNumerosParaCombinacao(tamanho_lado)
+    soma_magica = calcularSomaMagica(tamanho_lado)
+    lista_combinacoes = []
+    uma_combinacao = []
+    for pt in lista_numeros: # primeiro termo da combinação
+        for st in lista_numeros: # segundo termo
+            for tt in lista_numeros: # terceiro termo
+                uma_combinacao.append(pt)
+                if st not in uma_combinacao:
+                    uma_combinacao.append(st)
+                if tt not in uma_combinacao: # verificando apenas se não há repetição dos termos, nas combinações
+                    uma_combinacao.append(tt) # pois eles podem aparecer em qualquer ordem
+                if len(uma_combinacao) == tamanho_lado and sum(uma_combinacao) == soma_magica:
+                    lista_combinacoes.append(uma_combinacao) # uma combinação sendo adicionada a lista de possíveis combinações
+                uma_combinacao = [] # limpando a lista para receber a próxima combinação
+    return lista_combinacoes
 
-for c in combinacoes:
-    # print(len(quadro_magico))
-    # if len(quadro_magico) <= 3:
-    if 5 in c:
-        if quadro_magico[1][0] == 0:
-            quadro_magico[1] = c
-val = False
-for c in combinacoes:
-    if c not in quadro_magico:
-        for i in c:
-            for n in quadro_magico:
-                if i in n:
-                    val = True
-        if val == False:
-            if quadro_magico[0][0] == 0:
-                quadro_magico[0] = c
-            else:
-                if quadro_magico[2][0] == 0:
-                    quadro_magico[2] = c
-        else:
-            val = False
+def criarListaDasPosicoes(tamanho_lado):
+    lista_combinacoes = criarCombinacoesComListaDeNumeros(tamanho_lado)
+    posicoes_das_combinacoes = []
+    # este for criará uma lista, contendo todas as posições da lista de combinações, para montagem dos quadros
+    for i in range(0, len(lista_combinacoes)):
+        posicoes_das_combinacoes.append(i)
+    return posicoes_das_combinacoes
 
-for c in quadro_magico:
-    for i in c:
-        print(i, end=" ")
-    print()
+def criarCombinacoesDasPosicoes(tamanho_lado): # funcionando apenas para combinações de 3 números, quadro 3x3
+    posicoes_das_combinacoes = criarListaDasPosicoes(tamanho_lado)
+    quadrados_para_teste = [] # armazenando todos as possíveis quadros, por meio dos indices da lista de combinações
+    um_quadrado = []
+    for c1 in posicoes_das_combinacoes:
+        for c2 in posicoes_das_combinacoes:
+            for c3 in posicoes_das_combinacoes:
+                um_quadrado.append(c1)
+                if c2 not in um_quadrado:
+                    um_quadrado.append(c2)
+                    if c3 not in um_quadrado:
+                        um_quadrado.append(c3)
+                    if len(um_quadrado) == tamanho_lado: # um quadrado tem apenas 3 itens, pois cada item é a posição
+                        quadrados_para_teste.append(um_quadrado) # de uma combinação na lista de combinações
+                    um_quadrado = []
+    return quadrados_para_teste
 
-for i in combinacoes:
-    if 6 in i:
-        print(i, end=" ")
+def validarQuadradosMagicos(tamanho_lado):
+    lista_combinacoes = criarCombinacoesComListaDeNumeros(tamanho_lado)
+    soma_magica = calcularSomaMagica(tamanho_lado)
+    quadrados_de_posicoes = criarCombinacoesDasPosicoes(tamanho_lado)
+    quadrados_magico_valido = []
+    for indice in quadrados_de_posicoes: # vamos percorres nossa lista de indices para montar nos quadros para validação
+        quadrado_magico = [] # iniciando e reiniciando o quadro para receber o próximo quadro a ser validado
+        for i in indice: # cada indice é a combinação de 3 posições que formará o quadro
+            quadrado_magico.append(lista_combinacoes[i])
+        # todas as combinações foram validadas, por isso elas tem 3 números distintos e a soma igual a 15,
+        # por isso, para validar o quadro, será necessário verificar somente as somas das colunas e das diagonais
+        if quadrado_magico[0][0] + quadrado_magico[1][0] + quadrado_magico[2][0] == soma_magica:
+            if quadrado_magico[0][0] + quadrado_magico[1][1] + quadrado_magico[2][2] == soma_magica:
+                if quadrado_magico[0][1] + quadrado_magico[1][1] + quadrado_magico[2][1] == soma_magica:
+                    if quadrado_magico[0][2] + quadrado_magico[1][2] + quadrado_magico[2][2] == soma_magica:
+                        if quadrado_magico[0][2] + quadrado_magico[1][1] + quadrado_magico[2][0] == soma_magica:
+                            valida_combinacao = []
+                            for l1 in quadrado_magico[0]:
+                                for l2 in quadrado_magico[1]:
+                                    for l3 in quadrado_magico[2]:
+                                        if l1 == l2 or l2 == l3:
+                                            valida_combinacao.append(False)
+                                        else:
+                                            valida_combinacao.append(True)
+                            if False not in valida_combinacao:
+                                quadrados_magico_valido.append(quadrado_magico)
+    return quadrados_magico_valido
+
+def imprimirQuadradosMagicos(tamanho_lado):
+    quadrados_magico_valido = validarQuadradosMagicos(tamanho_lado)
+    for quadro in quadrados_magico_valido:
+        for c in quadro:
+            for i in c:
+                print(i, end=" ")
+            print()
+        print()
+
+imprimirQuadradosMagicos(3)
