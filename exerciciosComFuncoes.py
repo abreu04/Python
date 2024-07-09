@@ -535,7 +535,7 @@ def validarQuadradosMagicos(tamanho_lado):
                                 quadrados_magico_valido.append(quadrado_magico)
     return quadrados_magico_valido
 
-def imprimirQuadradosMagicos(tamanho_lado):
+def imprimirQuadradosMagicos(tamanho_lado=3):
     quadrados_magico_valido = validarQuadradosMagicos(tamanho_lado)
     for quadro in quadrados_magico_valido:
         for c in quadro:
@@ -544,4 +544,4 @@ def imprimirQuadradosMagicos(tamanho_lado):
             print()
         print()
 
-imprimirQuadradosMagicos(3)
+imprimirQuadradosMagicos()
